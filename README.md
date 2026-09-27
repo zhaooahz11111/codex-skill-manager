@@ -25,7 +25,7 @@ Codex 每轮都会把**已启用** skill 的名称和描述注入上下文，这
 | --- | --- |
 | `skillfind.py` | 本地检索索引：按任务关键词、分类、中英概念扩展和路由表找 skill，输出命中项的 `SKILL.md` 绝对路径 |
 | `skillctl.ps1` | 开关引擎：在 `skills/` 与 `skills-off/` 之间移动目录，支持通配符、分组（packs）、`keep-only`、占用体检 |
-| `config/skill-packs.json` | 分组定义：`always-on` / `core` / 以及各领域分组，供 `skillctl.ps1 on-pack` 使用 |
+| `config/skill-packs.json` | 分组骨架：`always-on` / `core` / 各领域分组，规则写成通配符家族（`nature-*`、`tao-*`、`*-builder`），供 `skillctl.ps1 on-pack` 使用 |
 | `config/skill-aliases.json` | 检索质量配置：`concepts` 是同义词组（中英混排），`routes` 是「任务短语 → skill 名单」 |
 | `skill/skill-manager/SKILL.md` | 给 Agent 用的 skill 本体：规定「先检索、再动手」的工作流，让 Codex 自己遵守 |
 | `install.ps1` | 把以上内容安装到 `$CODEX_HOME`（默认 `~/.codex`） |
@@ -89,6 +89,11 @@ powershell -File $env:USERPROFILE\.codex\skillctl.ps1 on <name>
 - **人可维护的偏好**。检索不准时不改代码，改 `skill-aliases.json`：组内、表内越靠前权重越高。
 - **常驻集合**。`skill-packs.json` 的 `always-on` 分组决定哪些 skill 常驻启用，
   其余按领域分组，需要时 `on-pack` 整批拉出来。
+- **分组规则是骨架，不是清单**。一条规则就是一个通配符（`*` 匹配任意字符），
+  **一个 skill 归属第一个命中的分组**，所以顺序有意义：具体分组排在前面，笼统的排在后面。
+  仓库里这份已经覆盖论文、文献、实验流程、AI 训练、生信、数据科学、MATLAB/Simulink、
+  NVIDIA 物理 AI、机器人安全合规、绘图出稿等家族，直接当成起点改就行：
+  加一条 `neuromorphic-*` 就多一个领域，不需要逐个 skill 罗列。
 
 ## 卸载
 
@@ -102,7 +107,7 @@ Remove-Item -Recurse $env:USERPROFILE\.codex\skills\skill-manager
 ## 注意
 
 - 只支持 Windows PowerShell 版本；检索脚本 `skillfind.py` 本身是跨平台的。
-- `skill-packs.json` 里的分组是按个人 skill 库整理出来的，换机器后请按 `skillctl.ps1 packs`
-  的实际匹配数调整。
+- `skill-packs.json` 的分组是按名字家族写的通配符，装完别人的 skill 库后
+  用 `skillctl.ps1 packs` 看各组的实际匹配数，再按自己的库增删规则。
 - 82,000 字符这个上限是用 `skillctl.ps1 measure`（读 `codex debug prompt-input`）实测出来的，
   Codex 版本变化后可能不同。
