@@ -1,0 +1,15 @@
+# generated locally by skillfind.py --reindex, machine specific
+skill-index.json
+
+# local install smoke test
+.install-test/
+
+# OS noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# editors
+.vscode/
+.idea/
+*.swp
