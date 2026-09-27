@@ -99,145 +99,52 @@
     ["评审", "review loop", "critique", "adversarial"],
     ["算力", "gpu", "compute", "cluster", "hpc", "ssh"],
     ["实验室自动化", "lab automation", "liquid handling", "opentrons", "protocol"],
-    ["建模比赛", "数学建模", "mathematical modeling", "competition"]
+    ["建模比赛", "数学建模", "mathematical modeling", "competition"],
+    ["功能安全", "safety compliance", "functional safety", "sil", "安全完整性等级", "iso 13849", "iec 62061", "iso 10218", "iso 15066", "ansi r1506", "风险评估", "risk assessment", "合规矩阵", "compliance matrix", "认证", "协作机器人", "cobot", "急停"],
+    ["蛋白质结构", "蛋白结构", "结构预测", "蛋白质折叠", "protein structure", "protein folding", "折叠", "openfold", "esm", "diffdock", "分子对接", "docking"],
+    ["系统发育", "进化树", "phylogenetics", "phylogenetic tree", "系统发生"],
+    ["数据看板", "仪表盘", "dashboard", "可视化看板", "kpi"],
+    ["论文漫画", "讲解漫画", "漫画解读", "论文图解", "文献漫画", "paper comic"]
   ],
   "_routes_comment": "路由表：用户用中文说出某类任务时，直接把这些 skill 顶到前面。命中任意 when 短语，对应 skill 会获得固定加权。改完跑一次 --reindex。",
   "routes": [
-    {
-      "when": ["数学建模", "数模", "建模比赛", "建模竞赛", "竞赛论文"],
-      "skills": ["cumcm-modeling-analyst", "math-modeling-solver", "deliver-cumcm-paper", "build-modeling-figures", "audit-modeling-evidence", "matlab", "sympy", "scikit-learn", "pymoo", "statistical-analysis", "matplotlib", "seaborn", "scientific-visualization", "paper-write", "paper-compile", "uncertainty-and-units"]
-    },
-    {
-      "when": ["solidworks", "三维建模", "零件建模", "装配体", "工程图", "数控", "螺纹孔", "倒角", "圆角", "sw", "出图"],
-      "skills": ["solidworks-automation", "sw-designer", "solidworks-engineering-drawing", "solidworks-threaded-holes", "solidworks-fillet-chamfer-cnc", "solidworks-automation-cn", "solidworks-vibecad", "cadquery-modeling", "mechanical-ai-review"]
-    },
-    {
-      "when": ["autocad", "cad", "图纸", "二维图", "dxf", "dwg"],
-      "skills": ["autocad-automation", "cadquery-modeling", "solidworks-engineering-drawing", "mechanical-ai-review"]
-    },
-    {
-      "when": ["simulink", "simscape", "模型在环", "mbd", "控制建模", "框图"],
-      "skills": ["simulink-orchestrator", "building-simulink-models", "simulating-simulink-models", "simulink-linearize", "simulink-frequency-response", "simulink-control-motors", "matlab", "matlab-orchestrator"]
-    },
-    {
-      "when": ["matlab", "simulink", "mat 文件", "mlx", "slx", "工具箱"],
-      "skills": ["matlab-orchestrator", "matlab-runner", "matlab", "matlab-analyze-data", "matlab-solve-optimization", "matlab-solve-pde", "matlab-design-digital-filter", "matlab-process-images"]
-    },
-    {
-      "when": ["cfd", "流体仿真", "fluent", "有限元", "finite element", "网格划分", "结构仿真", "abaqus", "ansys"],
-      "skills": ["fluent-cfd", "fluidsim", "mechanical-ai-review", "femis-skill", "umat-skill", "abaqus-skills"]
-    },
-    {
-      "when": ["可制造性", "机加工", "dfm", "装配分析", "结构评审", "机械设计"],
-      "skills": ["mechanical-ai-review", "sw-designer", "solidworks-fillet-chamfer-cnc", "solidworks-engineering-drawing"]
-    },
-    {
-      "when": ["树莓派", "raspberry pi", "raspberrypi", "gpio", "串口", "单片机", "嵌入式开发", "传感器接线"],
-      "skills": ["raspberry-pi-skill", "robot-bringup", "ros-skill", "matlab-connect-arduino", "matlab-discover-hardware", "jetson-build-source", "robot-perception"]
-    },
-    {
-      "when": ["ros", "ros2", "ros1", "机器人开发", "机器人操作系统", "自主导航", "slam", "机械臂控制", "nav2", "moveit"],
-      "skills": ["ros-skill", "ros2", "ros1", "ros2-engineering-skills", "ros2-web-integration", "robot-bringup", "robot-perception", "robotics-design-patterns", "robotics-software-principles", "docker-ros2-development", "robotics-testing", "robotics-security"]
-    },
-    {
-      "when": ["图像处理", "opencv", "阈值分割", "二值化", "形态学", "边缘检测", "轮廓提取", "滤波", "去噪", "图像预处理"],
-      "skills": ["01-image-fundamentals", "02-preprocessing-decisions", "03-thresholding-strategy", "04-morphology-toolkit", "05-contour-analysis", "matlab-process-images", "matlab-display-image", "matlab-enhance-camera-image"]
-    },
-    {
-      "when": ["目标检测", "yolo", "物体检测", "标注数据", "训练视觉模型", "模型推理部署视觉", "数据集标注"],
-      "skills": ["06-yolo-pipeline", "roboflow-inference", "roboflow-training-and-evaluation", "roboflow-data-management", "roboflow-universe", "roboflow-custom-weights-upload", "deepstream-import-vision-model", "matlab-integrate-pytorch-vision"]
-    },
-    {
-      "when": ["姿态估计", "mediapipe", "关键点", "手势识别", "人体姿态", "骨骼点"],
-      "skills": ["07-mediapipe-tracking", "robot-perception", "matlab-use-cameras"]
-    },
-    {
-      "when": ["jetson", "orin", "边缘设备", "边缘ai", "嵌入式ai", "开发板", "deepstream", "边缘推理"],
-      "skills": ["jetson-build-source", "jetson-customize-nvpmodel", "jetson-customize-pinmux", "jetson-customize-clocks", "deepstream-dev", "deepstream-generate-pipeline", "deepstream-import-vision-model", "holoscan-setup", "robot-bringup"]
-    },
-    {
-      "when": ["视频分析", "视频流", "录像检索", "监控视频", "多路视频", "视频理解"],
-      "skills": ["vss-deploy-detection-tracking-2d", "vss-deploy-detection-tracking-3d", "vss-ask-video", "vss-generate-video-report", "deepstream-generate-pipeline", "rtvi-cv-scaffold-vss-service"]
-    },
-    {
-      "when": ["autocad", "dwg", "图纸重绘", "描图", "二维工程图", "cad 图纸", "dxf"],
-      "skills": ["autocad-dwg-redraw", "autocad-image-redraw", "autocad-drafting", "cad-automation", "cad-designer", "autocad-automation"]
-    },
-    {
-      "when": ["去ai味", "去 ai 味", "降aigc", "降 aigc", "像人写的", "说人话", "ai腔", "机器味", "太ai了", "改自然", "去味", "不想要ai味"],
-      "skills": ["humanizer-zh", "qu-ai-wei", "shuorenhua", "lieflat-less-ai-tone", "humanizer", "sepia", "deslop", "humanizer-zh-academic", "academic-humanizer"]
-    },
-    {
-      "when": ["降重", "改论文", "降aigc率", "论文去ai", "毕业论文"],
-      "skills": ["humanizer-zh-academic", "humanizer-zh", "nature-polishing", "nature-writing"]
-    },
-    {
-      "when": ["写论文", "投稿", "期刊", "返修", "审稿意见", "回复审稿", "小论文", "sci", "会议论文"],
-      "skills": ["paper-write", "paper-plan", "paper-compile", "nature-writing", "scientific-writing", "ml-paper-writing", "nature-reviewer", "nature-response", "rebuttal", "venue-templates"]
-    },
-    {
-      "when": ["文献综述", "找文献", "查文献", "检索文献", "相关研究", "别人做过"],
-      "skills": ["literature-review", "research-lit", "nature-academic-search", "paper-lookup", "arxiv", "semantic-scholar", "openalex", "deepxiv", "novelty-check"]
-    },
-    {
-      "when": ["精读", "读懂这篇", "全文翻译", "中英对照", "论文翻译"],
-      "skills": ["nature-reader", "nature-paper-card", "alphaxiv", "deepxiv"]
-    },
-    {
-      "when": ["做ppt", "幻灯片", "汇报", "答辩", "组会", "开题答辩", "讲稿"],
-      "skills": ["paper-deck", "html-ppt", "pptx", "scientific-slides", "presenting-conference-talks", "nature-paper2ppt", "paper-slides", "slides-polish"]
-    },
-    {
-      "when": ["画图", "配图", "作图", "图表", "示意图", "流程图", "可视化"],
-      "skills": ["matplotlib", "seaborn", "scientific-visualization", "nature-figure", "paper-figure", "figure-spec", "mermaid-diagram", "paper-illustration"]
-    },
-    {
-      "when": ["报错", "调试", "bug", "跑不通", "装不上", "环境问题", "为什么失败"],
-      "skills": ["web-debug-search", "parallel-web", "get-available-resources"]
-    },
-    {
-      "when": ["数据处理", "数据分析", "清洗数据", "表格处理", "csv"],
-      "skills": ["polars", "xlsx", "exploratory-data-analysis", "statistical-analysis", "build-dashboard", "dask"]
-    },
-    {
-      "when": ["统计检验", "显著性", "假设检验", "样本量", "置信区间"],
-      "skills": ["statistical-analysis", "statsmodels", "statistical-power", "scikit-learn", "pymc"]
-    },
-    {
-      "when": ["专利", "交底书", "权利要求", "申请专利", "查新", "现有技术"],
-      "skills": ["patent-pipeline", "claims-drafting", "invention-structuring", "specification-writing", "prior-art-search", "patent-novelty-check", "nature-paper-to-patent"]
-    },
-    {
-      "when": ["微调", "训练模型", "lora", "sft", "大模型训练"],
-      "skills": ["peft", "llama-factory", "axolotl", "unsloth", "trl-fine-tuning", "transformers", "litgpt", "grpo-rl-training", "ml-training-recipes"]
-    },
-    {
-      "when": ["部署", "推理加速", "上线模型", "服务化", "高并发"],
-      "skills": ["vllm", "sglang", "tensorrt-llm", "llama-cpp", "gguf-quantization", "speculative-decoding", "modal"]
-    },
-    {
-      "when": ["单细胞", "scrna", "转录组", "测序数据"],
-      "skills": ["scanpy", "anndata", "scvi-tools", "cellxgene-census", "scvelo", "pydeseq2", "bulk-rnaseq"]
-    },
-    {
-      "when": ["深调研", "调研报告", "行业研究", "技术调研", "市场报告"],
-      "skills": ["deep-research", "research-lookup", "market-research-reports", "parallel-web", "research-wiki"]
-    },
-    {
-      "when": ["开题", "研究计划", "基金申请", "项目申请书", "写proposal"],
-      "skills": ["grant-proposal", "research-grants", "researchwrite", "research-refine", "idea-creator", "experiment-plan"]
-    },
-    {
-      "when": ["实验记录", "实验日志", "记录数据", "工作日志"],
-      "skills": ["nature-experiment-log", "obsidian-notes-creator"]
-    },
-    {
-      "when": ["公式推导", "推导", "定理证明", "数学证明"],
-      "skills": ["formula-derivation", "proof-writer", "proof-checker", "sympy"]
-    },
-    {
-      "when": ["改简历", "写报告", "公文", "通知", "邮件"],
-      "skills": ["official-document-skill", "docx", "nature-polishing"]
-    }
+    {"when": ["数学建模", "数模", "建模比赛", "建模竞赛", "竞赛论文"], "skills": ["cumcm-modeling-analyst", "math-modeling-solver", "deliver-cumcm-paper", "build-modeling-figures", "audit-modeling-evidence", "matlab", "sympy", "scikit-learn", "pymoo", "statistical-analysis", "matplotlib", "seaborn", "scientific-visualization", "paper-write", "paper-compile", "uncertainty-and-units"]},
+    {"when": ["solidworks", "三维建模", "零件建模", "装配体", "工程图", "数控", "螺纹孔", "倒角", "圆角", "sw", "出图"], "skills": ["solidworks-automation", "sw-designer", "solidworks-engineering-drawing", "solidworks-threaded-holes", "solidworks-fillet-chamfer-cnc", "solidworks-automation-cn", "solidworks-vibecad", "cadquery-modeling", "mechanical-ai-review"]},
+    {"when": ["autocad", "cad", "图纸", "二维图", "dxf", "dwg"], "skills": ["autocad-automation", "cadquery-modeling", "solidworks-engineering-drawing", "mechanical-ai-review"]},
+    {"when": ["simulink", "simscape", "模型在环", "mbd", "控制建模", "框图"], "skills": ["simulink-orchestrator", "building-simulink-models", "simulating-simulink-models", "simulink-linearize", "simulink-frequency-response", "simulink-control-motors", "matlab", "matlab-orchestrator"]},
+    {"when": ["matlab", "simulink", "mat 文件", "mlx", "slx", "工具箱"], "skills": ["matlab-orchestrator", "matlab-runner", "matlab", "matlab-analyze-data", "matlab-solve-optimization", "matlab-solve-pde", "matlab-design-digital-filter", "matlab-process-images"]},
+    {"when": ["cfd", "流体仿真", "fluent", "有限元", "finite element", "网格划分", "结构仿真", "abaqus", "ansys"], "skills": ["fluent-cfd", "fluidsim", "mechanical-ai-review", "femis-skill", "umat-skill", "abaqus-skills"]},
+    {"when": ["可制造性", "机加工", "dfm", "装配分析", "结构评审", "机械设计"], "skills": ["mechanical-ai-review", "sw-designer", "solidworks-fillet-chamfer-cnc", "solidworks-engineering-drawing"]},
+    {"when": ["树莓派", "raspberry pi", "raspberrypi", "gpio", "串口", "单片机", "嵌入式开发", "传感器接线"], "skills": ["raspberry-pi-skill", "robot-bringup", "ros-skill", "matlab-connect-arduino", "matlab-discover-hardware", "jetson-build-source", "robot-perception"]},
+    {"when": ["ros", "ros2", "ros1", "机器人开发", "机器人操作系统", "自主导航", "slam", "机械臂控制", "nav2", "moveit"], "skills": ["ros-skill", "ros2", "ros1", "ros2-engineering-skills", "ros2-web-integration", "robot-bringup", "robot-perception", "robotics-design-patterns", "robotics-software-principles", "docker-ros2-development", "robotics-testing", "robotics-security"]},
+    {"when": ["图像处理", "opencv", "阈值分割", "二值化", "形态学", "边缘检测", "轮廓提取", "滤波", "去噪", "图像预处理"], "skills": ["01-image-fundamentals", "02-preprocessing-decisions", "03-thresholding-strategy", "04-morphology-toolkit", "05-contour-analysis", "matlab-process-images", "matlab-display-image", "matlab-enhance-camera-image"]},
+    {"when": ["目标检测", "yolo", "物体检测", "标注数据", "训练视觉模型", "模型推理部署视觉", "数据集标注"], "skills": ["06-yolo-pipeline", "roboflow-inference", "roboflow-training-and-evaluation", "roboflow-data-management", "roboflow-universe", "roboflow-custom-weights-upload", "deepstream-import-vision-model", "matlab-integrate-pytorch-vision"]},
+    {"when": ["姿态估计", "mediapipe", "关键点", "手势识别", "人体姿态", "骨骼点"], "skills": ["07-mediapipe-tracking", "robot-perception", "matlab-use-cameras"]},
+    {"when": ["jetson", "orin", "边缘设备", "边缘ai", "嵌入式ai", "开发板", "deepstream", "边缘推理"], "skills": ["jetson-build-source", "jetson-customize-nvpmodel", "jetson-customize-pinmux", "jetson-customize-clocks", "deepstream-dev", "deepstream-generate-pipeline", "deepstream-import-vision-model", "holoscan-setup", "robot-bringup"]},
+    {"when": ["视频分析", "视频流", "录像检索", "监控视频", "多路视频", "视频理解"], "skills": ["vss-deploy-detection-tracking-2d", "vss-deploy-detection-tracking-3d", "vss-ask-video", "vss-generate-video-report", "deepstream-generate-pipeline", "rtvi-cv-scaffold-vss-service"]},
+    {"when": ["autocad", "dwg", "图纸重绘", "描图", "二维工程图", "cad 图纸", "dxf"], "skills": ["autocad-dwg-redraw", "autocad-image-redraw", "autocad-drafting", "cad-automation", "cad-designer", "autocad-automation"]},
+    {"when": ["去ai味", "去 ai 味", "降aigc", "降 aigc", "像人写的", "说人话", "ai腔", "机器味", "太ai了", "改自然", "去味", "不想要ai味"], "skills": ["humanizer-zh", "qu-ai-wei", "shuorenhua", "lieflat-less-ai-tone", "humanizer", "sepia", "deslop", "humanizer-zh-academic", "academic-humanizer"]},
+    {"when": ["降重", "改论文", "降aigc率", "论文去ai", "毕业论文"], "skills": ["humanizer-zh-academic", "humanizer-zh", "nature-polishing", "nature-writing"]},
+    {"when": ["写论文", "投稿", "期刊", "返修", "审稿意见", "回复审稿", "小论文", "sci", "会议论文"], "skills": ["paper-write", "paper-plan", "paper-compile", "nature-writing", "scientific-writing", "ml-paper-writing", "nature-reviewer", "nature-response", "rebuttal", "venue-templates"]},
+    {"when": ["文献综述", "找文献", "查文献", "检索文献", "相关研究", "别人做过"], "skills": ["literature-review", "research-lit", "nature-academic-search", "paper-lookup", "arxiv", "semantic-scholar", "openalex", "deepxiv", "novelty-check"]},
+    {"when": ["精读", "读懂这篇", "全文翻译", "中英对照", "论文翻译"], "skills": ["nature-reader", "nature-paper-card", "alphaxiv", "deepxiv"]},
+    {"when": ["做ppt", "幻灯片", "汇报", "答辩", "组会", "开题答辩", "讲稿"], "skills": ["paper-deck", "html-ppt", "pptx", "scientific-slides", "presenting-conference-talks", "nature-paper2ppt", "paper-slides", "slides-polish"]},
+    {"when": ["画图", "配图", "作图", "图表", "示意图", "流程图", "可视化"], "skills": ["matplotlib", "seaborn", "scientific-visualization", "nature-figure", "paper-figure", "figure-spec", "mermaid-diagram", "paper-illustration"]},
+    {"when": ["报错", "调试", "bug", "跑不通", "装不上", "环境问题", "为什么失败"], "skills": ["web-debug-search", "parallel-web", "get-available-resources"]},
+    {"when": ["数据处理", "数据分析", "清洗数据", "表格处理", "csv"], "skills": ["polars", "xlsx", "exploratory-data-analysis", "statistical-analysis", "build-dashboard", "dask"]},
+    {"when": ["统计检验", "显著性", "假设检验", "样本量", "置信区间"], "skills": ["statistical-analysis", "statsmodels", "statistical-power", "scikit-learn", "pymc"]},
+    {"when": ["专利", "交底书", "权利要求", "申请专利", "查新", "现有技术"], "skills": ["patent-pipeline", "claims-drafting", "invention-structuring", "specification-writing", "prior-art-search", "patent-novelty-check", "nature-paper-to-patent"]},
+    {"when": ["微调", "训练模型", "lora", "sft", "大模型训练"], "skills": ["peft", "llama-factory", "axolotl", "unsloth", "trl-fine-tuning", "transformers", "litgpt", "grpo-rl-training", "ml-training-recipes"]},
+    {"when": ["部署", "推理加速", "上线模型", "服务化", "高并发"], "skills": ["vllm", "sglang", "tensorrt-llm", "llama-cpp", "gguf-quantization", "speculative-decoding", "modal"]},
+    {"when": ["单细胞", "scrna", "转录组", "测序数据"], "skills": ["scanpy", "anndata", "scvi-tools", "cellxgene-census", "scvelo", "pydeseq2", "bulk-rnaseq"]},
+    {"when": ["深调研", "调研报告", "行业研究", "技术调研", "市场报告"], "skills": ["deep-research", "research-lookup", "market-research-reports", "parallel-web", "research-wiki"]},
+    {"when": ["开题", "研究计划", "基金申请", "项目申请书", "写proposal"], "skills": ["grant-proposal", "research-grants", "researchwrite", "research-refine", "idea-creator", "experiment-plan"]},
+    {"when": ["实验记录", "实验日志", "记录数据", "工作日志"], "skills": ["nature-experiment-log", "obsidian-notes-creator"]},
+    {"when": ["公式推导", "推导", "定理证明", "数学证明"], "skills": ["formula-derivation", "proof-writer", "proof-checker", "sympy"]},
+    {"when": ["改简历", "写报告", "公文", "通知", "邮件"], "skills": ["official-document-skill", "docx", "nature-polishing"]},
+    {"when": ["机器人安全", "功能安全", "安全合规", "安全认证", "协作机器人", "cobot", "急停", "风险评估", "iso 13849", "iec 62061", "iso 10218", "iso 15066", "ansi r1506"], "skills": ["iec62061-sil-builder", "iso13849-plr-builder", "iso10218-compliance-matrix-builder", "iso12100-risk-assessment-builder", "iso15066-biomechanical-limits-builder", "cobot-hand-guiding-builder", "interlock-estop-architecture-builder", "robotics-security"]},
+    {"when": ["蛋白质结构", "蛋白结构", "结构预测", "蛋白质折叠", "protein structure", "protein folding", "分子对接", "docking"], "skills": ["esm", "diffdock", "bionemo-openfold2-nim", "bionemo-msa-structure-prediction-pipeline", "alphagenome", "rdkit"]},
+    {"when": ["数据看板", "仪表盘", "dashboard", "kpi 看板", "可视化看板"], "skills": ["build-dashboard", "scientific-visualization", "matplotlib", "seaborn", "infographics"]},
+    {"when": ["论文漫画", "讲解漫画", "漫画解读", "把论文做成漫画", "论文图解", "paper comic"], "skills": ["paper-comic", "paper-deck", "paper-analyzer", "nature-paper2ppt", "nature-image2ppt"]}
   ]
 }
