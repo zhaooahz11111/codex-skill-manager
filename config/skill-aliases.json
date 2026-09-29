@@ -104,7 +104,8 @@
     ["蛋白质结构", "蛋白结构", "结构预测", "蛋白质折叠", "protein structure", "protein folding", "折叠", "openfold", "esm", "diffdock", "分子对接", "docking"],
     ["系统发育", "进化树", "phylogenetics", "phylogenetic tree", "系统发生"],
     ["数据看板", "仪表盘", "dashboard", "可视化看板", "kpi"],
-    ["论文漫画", "讲解漫画", "漫画解读", "论文图解", "文献漫画", "paper comic"]
+    ["论文漫画", "讲解漫画", "漫画解读", "论文图解", "文献漫画", "paper comic"],
+    ["缓存命中", "命中率", "cache hit", "cache miss", "缓存未命中", "prompt cache", "提示缓存", "前缀缓存", "prefix caching", "cached_tokens", "kv cache", "ttft", "prefill", "缓存不命中", "命中缓存"]
   ],
   "_routes_comment": "路由表：用户用中文说出某类任务时，直接把这些 skill 顶到前面。命中任意 when 短语，对应 skill 会获得固定加权。改完跑一次 --reindex。",
   "routes": [
@@ -145,6 +146,7 @@
     {"when": ["机器人安全", "功能安全", "安全合规", "安全认证", "协作机器人", "cobot", "急停", "风险评估", "iso 13849", "iec 62061", "iso 10218", "iso 15066", "ansi r1506"], "skills": ["iec62061-sil-builder", "iso13849-plr-builder", "iso10218-compliance-matrix-builder", "iso12100-risk-assessment-builder", "iso15066-biomechanical-limits-builder", "cobot-hand-guiding-builder", "interlock-estop-architecture-builder", "robotics-security"]},
     {"when": ["蛋白质结构", "蛋白结构", "结构预测", "蛋白质折叠", "protein structure", "protein folding", "分子对接", "docking"], "skills": ["esm", "diffdock", "bionemo-openfold2-nim", "bionemo-msa-structure-prediction-pipeline", "alphagenome", "rdkit"]},
     {"when": ["数据看板", "仪表盘", "dashboard", "kpi 看板", "可视化看板"], "skills": ["build-dashboard", "scientific-visualization", "matplotlib", "seaborn", "infographics"]},
-    {"when": ["论文漫画", "讲解漫画", "漫画解读", "把论文做成漫画", "论文图解", "paper comic"], "skills": ["paper-comic", "paper-deck", "paper-analyzer", "nature-paper2ppt", "nature-image2ppt"]}
+    {"when": ["论文漫画", "讲解漫画", "漫画解读", "把论文做成漫画", "论文图解", "paper comic"], "skills": ["paper-comic", "paper-deck", "paper-analyzer", "nature-paper2ppt", "nature-image2ppt"]},
+    {"when": ["缓存命中", "缓存没命中", "缓存未命中", "cached_tokens", "prompt cache", "提示缓存", "前缀缓存", "kv cache", "ttft", "prefill", "cache hit rate"], "skills": ["audit-prompt-caching", "vllm", "sglang", "tensorrt-llm", "langsmith"]}
   ]
 }
